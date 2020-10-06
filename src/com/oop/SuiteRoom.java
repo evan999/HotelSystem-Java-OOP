@@ -3,8 +3,8 @@ package com.oop;
 public class SuiteRoom extends Room {
     private int rooms;
     private int beds;
-    private boolean kitchenette;
-    private boolean needsRestock;
+    public boolean kitchenette = true;
+    public boolean needsRestock = false;
 
     public SuiteRoom(int rooms, int beds, boolean kitchenette, boolean needsRestock){
         super();
@@ -22,6 +22,7 @@ public class SuiteRoom extends Room {
         this.rooms = rooms;
     }
 
+
     public boolean reserve(int room){
         if(needsRestock){
             return false;
@@ -30,6 +31,18 @@ public class SuiteRoom extends Room {
             return super.reserve(room);
         }
     }
+
+    public void checkout(){
+        needsRestock = true;
+        super.checkout(occupant);
+    }
+
+    public boolean restock(){
+        needsRestock = false;
+        return needsRestock;
+    }
+
+
 
 
 }

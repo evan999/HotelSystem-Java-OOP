@@ -6,18 +6,19 @@ public class Room {
     private int floor;
     private boolean occupied;
     private boolean needsCleaning;
-    private float averagePrice;
+    private int averagePrice = 38000;
     public Client occupant;
 
     public Room(){
 
     }
 
-    public Room(int roomNo, String roomType, int floor, float averagePrice){
+    public Room(int roomNo, String roomType, int floor, int averagePrice, Client occupant){
         this.roomNo = roomNo;
         this.roomType = roomType;
         this.floor = floor;
         this.averagePrice = averagePrice;
+        this.occupant = occupant;
     }
 
     // Any other constructors?
@@ -54,11 +55,11 @@ public class Room {
         this.floor = floor;
     }
 
-    public float getAveragePrice(){
+    public int getAveragePrice(){
         return averagePrice;
     }
 
-    public void setAveragePrice(float averagePrice){
+    public void setAveragePrice(int averagePrice){
         if(averagePrice < 0){
             throw new IllegalArgumentException("Price cannot be negative.");
         }
@@ -92,13 +93,15 @@ public class Room {
     }
     */
 
-    public boolean reserve(int room){
+    public boolean reserve(int room, int currentBill){
         // Change room to isOccupied
 
         // What properties would be assigned to a client;
-        //occupant = client;
+        Client client = new Client();
+        occupant = client;
         if(!(occupied && needsCleaning)){
             occupied = true;
+            client.currentBill = averagePrice;
             return true;
         }
         else{
@@ -115,9 +118,9 @@ public class Room {
         needsCleaning = true;
     }
 
-    public String clean(){
+    public void clean(){
         needsCleaning = false;
-        return "Room has been cleaned";
+        System.out.println("Room has been cleaned");
     }
 
 

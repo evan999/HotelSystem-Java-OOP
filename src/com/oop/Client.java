@@ -3,8 +3,8 @@ package com.oop;
 public class Client {
     private String name;
     private int partySize;
-    private float currentBill;
-    private float prepaidAmount;
+    private int currentBill;
+    private int prepaidAmount;
     private String phoneNo;
     private int roomNo;
     private String roomType;
@@ -13,7 +13,7 @@ public class Client {
 
     }
 
-    public Client(String name, int partySize, float currentBill, float prepaidAmount, String phoneNo){
+    public Client(String name, int partySize, int currentBill, int prepaidAmount, String phoneNo){
         this.name = name;
         this.partySize = partySize;
         this.currentBill = currentBill;
@@ -21,13 +21,13 @@ public class Client {
         setPhoneNo(phoneNo);
     }
 
-    public float makePayment(float payment){
+    public int makePayment(int payment){
         prepaidAmount += payment;
         return prepaidAmount;
     }
 
-    public float chargeRoom(float increase){
-        currentBill += increase;
+    public int chargeRoom(int charge){
+        currentBill += charge;
         return currentBill;
     }
 
@@ -55,11 +55,16 @@ public class Client {
         this.partySize = partySize;
     }
 
-    public float getPrepaidAmount(){
+    public float getOutstandingBalance(int currentBill){
+        int prepaid = getPrepaidAmount();
+        return currentBill - prepaid;
+    }
+
+    public int getPrepaidAmount(){
         return prepaidAmount;
     }
 
-    public void setPrepaidAmount(){
+    public void setPrepaidAmount(int prepaidAmount){
         this.prepaidAmount = prepaidAmount;
     }
 
