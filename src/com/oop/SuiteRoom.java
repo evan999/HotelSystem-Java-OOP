@@ -14,21 +14,13 @@ public class SuiteRoom extends Room {
         this.needsRestock = needsRestock;
     }
 
-    public int getRooms(){
-        return rooms;
-    }
-
-    public void setRooms(int rooms){
-        this.rooms = rooms;
-    }
-
-
-    public boolean reserve(int room){
+    @Override
+    public boolean reserve(int room, int currentBill){
         if(needsRestock){
             return false;
         }
         else{
-            return super.reserve(room);
+            return super.reserve(room, currentBill);
         }
     }
 

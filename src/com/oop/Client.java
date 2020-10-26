@@ -3,7 +3,7 @@ package com.oop;
 public class Client {
     private String name;
     private int partySize;
-    private int currentBill;
+    public int currentBill;
     private int prepaidAmount;
     private String phoneNo;
     private int roomNo;
@@ -31,21 +31,12 @@ public class Client {
         return currentBill;
     }
 
-
-    public String getName(){
-        return name;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-
     public int getPartySize(){
         return partySize;
     }
 
     public void setPartySize(int partySize){
-        if(partySize > 4){
+        if(partySize > 6){
             throw new IllegalArgumentException("Party size is too large!");
         }
         else if(partySize < 1){
@@ -55,17 +46,10 @@ public class Client {
         this.partySize = partySize;
     }
 
-    public float getOutstandingBalance(int currentBill){
-        int prepaid = getPrepaidAmount();
-        return currentBill - prepaid;
-    }
-
-    public int getPrepaidAmount(){
-        return prepaidAmount;
-    }
-
-    public void setPrepaidAmount(int prepaidAmount){
-        this.prepaidAmount = prepaidAmount;
+    public int getOutstandingBalance(){
+        //int prepaid = getPrepaidAmount();
+        //return currentBill - prepaidAmount;
+        return currentBill;
     }
 
     public String getPhoneNo(){
@@ -81,14 +65,6 @@ public class Client {
         }
     }
 
-    public int getRoomNo(){
-        return roomNo;
-    }
-
-    public void setRoomNo(int roomNo){
-        this.roomNo = roomNo;
-    }
-
     public String getRoomType(){
         return roomType;
     }
@@ -99,5 +75,9 @@ public class Client {
         }
 
         this.roomType = roomType;
+    }
+
+    public void getClientBalance(int roomNo){
+
     }
 }

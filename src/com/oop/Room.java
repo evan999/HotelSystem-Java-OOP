@@ -4,10 +4,10 @@ public class Room {
     private int roomNo;
     private String roomType;
     private int floor;
-    private boolean occupied;
-    private boolean needsCleaning;
+    private boolean occupied = false;
+    private boolean needsCleaning = false;
     private int averagePrice = 38000;
-    public Client occupant;
+    public Client occupant = new Client();
 
     public Room(){
 
@@ -24,23 +24,6 @@ public class Room {
     // Any other constructors?
 
     public Room(String roomType){
-        this.roomType = roomType;
-    }
-
-
-    public int getRoomNo(){
-        return roomNo;
-    }
-
-    public void setRoomNo(int roomNo){
-        this.roomNo = roomNo;
-    }
-
-    public String getRoomType(){
-        return roomType;
-    }
-
-    public void setRoomType(String roomType){
         this.roomType = roomType;
     }
 
@@ -67,31 +50,6 @@ public class Room {
         this.averagePrice = averagePrice;
     }
 
-    public boolean isOccupied(){
-        return occupied;
-    }
-
-    public void setOccupied(boolean occupied){
-        this.occupied = occupied;
-    }
-
-    public boolean getNeedsCleaning(){
-        return needsCleaning;
-    }
-
-    public void setNeedsCleaning(boolean needsCleaning){
-        this.needsCleaning = needsCleaning;
-    }
-
-    /*
-    public Client getClient(){
-        return new Client();
-    }
-
-    public void setClient(Client client){
-        this.client = client;
-    }
-    */
 
     public boolean reserve(int room, int currentBill){
         // Change room to isOccupied
@@ -112,10 +70,13 @@ public class Room {
 
     }
 
-    public void checkout(Client client){
-        client = null;
+    public void checkout(Client occupant){
+        // remove client from room
+        System.out.println(occupant.getOutstandingBalance());
+        occupant = null;
         occupied = false;
         needsCleaning = true;
+
     }
 
     public void clean(){

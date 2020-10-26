@@ -36,12 +36,13 @@ public class StandardRoom extends Room{
         this.rooms = rooms;
     }
 
-    public boolean reserve(int room, int partySize){
+    @Override
+    public boolean reserve(int room, int partySize, int currentBill){
         if(partySize > beds*2){
             return false;
         }
         else{
-            return super.reserve(room);
+            return super.reserve(room, currentBill);
         }
     }
 
