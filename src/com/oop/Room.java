@@ -4,21 +4,21 @@ public class Room {
     private int roomNo;
     private String roomType;
     private int floor;
-    private boolean occupied = false;
-    private boolean needsCleaning = false;
-    private int averagePrice = 38000;
-    public Client occupant = new Client();
+    private boolean occupied;
+    private boolean needsCleaning;
+    //private float costPerNight;
+    private float averagePrice = 38000;
+    private Client occupant;
 
-    public Room(){
 
-    }
-
-    public Room(int roomNo, String roomType, int floor, int averagePrice, Client occupant){
+    public Room(int roomNo, String roomType, float averagePrice, Client occupant){
         this.roomNo = roomNo;
         this.roomType = roomType;
         this.floor = floor;
-        this.averagePrice = averagePrice;
         this.occupant = occupant;
+        this.averagePrice = averagePrice;
+        occupied = false;
+        needsCleaning = false;
     }
 
     // Any other constructors?
@@ -27,39 +27,11 @@ public class Room {
         this.roomType = roomType;
     }
 
-    public int getFloor(){
-        return floor;
-    }
+    public boolean reserve(int roomNo, Client occupant){
 
-    public void setFloor(int floor){
-        if(floor > 0){
-            throw new IllegalArgumentException("Floor cannot be negative.");
-        }
-        this.floor = floor;
-    }
-
-    public int getAveragePrice(){
-        return averagePrice;
-    }
-
-    public void setAveragePrice(int averagePrice){
-        if(averagePrice < 0){
-            throw new IllegalArgumentException("Price cannot be negative.");
-        }
-
-        this.averagePrice = averagePrice;
-    }
-
-
-    public boolean reserve(int room, int currentBill){
-        // Change room to isOccupied
-
-        // What properties would be assigned to a client;
-        Client client = new Client();
-        occupant = client;
+        occupant = occupant;
         if(!(occupied && needsCleaning)){
             occupied = true;
-            client.currentBill = averagePrice;
             return true;
         }
         else{
@@ -70,18 +42,27 @@ public class Room {
 
     }
 
-    public void checkout(Client occupant){
-        // remove client from room
-        System.out.println(occupant.getOutstandingBalance());
+    public float checkout(int nights){
         occupant = null;
         occupied = false;
         needsCleaning = true;
-
+        float totalCost = averagePrice * nights;
+        System.out.println("Total cost of room: " + totalCost);
+        return totalCost;
     }
 
     public void clean(){
         needsCleaning = false;
         System.out.println("Room has been cleaned");
+    }
+
+    public Client getOccupant(){
+        return occupant;
+    }
+
+    @Override
+    public String toString(){
+        return occupant.getName();
     }
 
 

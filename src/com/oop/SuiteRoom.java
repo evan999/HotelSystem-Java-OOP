@@ -6,27 +6,25 @@ public class SuiteRoom extends Room {
     public boolean kitchenette = true;
     public boolean needsRestock = false;
 
-    public SuiteRoom(int rooms, int beds, boolean kitchenette, boolean needsRestock){
-        super();
+    public SuiteRoom(int rooms, int roomNo, int beds, Client occupant, float averagePrice){
+        super(roomNo, "Suite", averagePrice, occupant);
         this.rooms = rooms;
         this.beds = beds;
-        this.kitchenette = kitchenette;
-        this.needsRestock = needsRestock;
     }
 
     @Override
-    public boolean reserve(int room, int currentBill){
+    public boolean reserve(int room, Client occupant){
         if(needsRestock){
             return false;
         }
         else{
-            return super.reserve(room, currentBill);
+            return super.reserve(room, getOccupant());
         }
     }
 
-    public void checkout(){
+    public float checkout(int nights){
         needsRestock = true;
-        super.checkout(occupant);
+        return super.checkout(nights);
     }
 
     public boolean restock(){

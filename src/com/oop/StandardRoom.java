@@ -4,14 +4,8 @@ public class StandardRoom extends Room{
     private int rooms;
     private int beds;
 
-
-    public StandardRoom(){
-
-    }
-
-
-    public StandardRoom(String roomType, int rooms, int beds){
-        super();
+    public StandardRoom(int roomNo, String roomType, float averagePrice, Client occupant, int rooms, int beds){
+        super(roomNo, "Standard", averagePrice, occupant);
         this.rooms = rooms;
         this.beds = beds;
     }
@@ -20,38 +14,19 @@ public class StandardRoom extends Room{
         return beds;
     }
 
-    public void setBeds(int beds){
-        if(beds > 4 || beds < 1){
-            throw new IllegalArgumentException("Beds must be 1 or 2.");
-        }
-
-        this.beds = beds;
-    }
-
     public int getRooms(){
         return rooms;
     }
 
-    public void setRooms(int rooms){
-        this.rooms = rooms;
-    }
-
     @Override
-    public boolean reserve(int room, int partySize, int currentBill){
+    public boolean reserve(int roomNo, Client occupant){
+        int partySize = occupant.getPartySize();
         if(partySize > beds*2){
+            System.out.println("Party size is too large to accommodate for beds available.");
             return false;
         }
         else{
-            return super.reserve(room, currentBill);
+            return super.reserve(roomNo, getOccupant());
         }
     }
-
-
-    /*
-    @Override
-    public boolean reserve(Client client, ){
-
-    }
-    */
-
 }
