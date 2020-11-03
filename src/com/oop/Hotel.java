@@ -13,12 +13,15 @@ public class Hotel {
     private List<SuiteRoom> reservedSuites;
     private List<Client> clients;
 
-    public Hotel(List<StandardRoom> availableStandards, List<StandardRoom> reservedStandards, List<SuiteRoom> availableSuites, List<SuiteRoom> reservedSuites, List<Client> clients){
+    public Hotel(String name, int rooms, List<StandardRoom> availableStandards, List<StandardRoom> reservedStandards, List<SuiteRoom> availableSuites, List<SuiteRoom> reservedSuites, List<Client> clients){
+        this.name = name;
+        this.rooms = rooms;
         availableStandards = new ArrayList<>();
         availableSuites = new ArrayList<>();
         reservedSuites = new ArrayList<>();
         clients = new ArrayList<>();
     }
+
 
     public void addRoom(String roomType){
         if(roomType == "standard" || roomType == "STANDARD"){
@@ -41,4 +44,5 @@ public class Hotel {
     public float getClientBalance(){
 
     }
+    
 }

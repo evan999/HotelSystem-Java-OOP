@@ -3,10 +3,10 @@ package com.oop;
 public class SuiteRoom extends Room {
     private int rooms;
     private int beds;
-    public boolean kitchenette = true;
-    public boolean needsRestock = false;
+    private boolean kitchenette = true;
+    private boolean needsRestock = false;
 
-    public SuiteRoom(int rooms, int roomNo, int beds, Client occupant, float averagePrice){
+    public SuiteRoom(int rooms, int roomNo, String roomType, int beds, Client occupant, float averagePrice){
         super(roomNo, "Suite", averagePrice, occupant);
         this.rooms = rooms;
         this.beds = beds;

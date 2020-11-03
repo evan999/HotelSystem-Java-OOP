@@ -38,8 +38,6 @@ public class Room {
             System.out.println("Room unavailable");
             return false;
         }
-
-
     }
 
     public float checkout(int nights){
