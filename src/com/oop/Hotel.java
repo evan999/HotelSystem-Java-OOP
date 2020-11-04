@@ -24,6 +24,7 @@ public class Hotel {
 
 
     public void addRoom(String roomType){
+        // Add a room to room directory
         if(roomType == "standard" || roomType == "STANDARD"){
             availableStandards.add(new StandardRoom());
         }
@@ -33,8 +34,15 @@ public class Hotel {
 
     }
 
-    public List<Integer> reserveRoom(String roomType){
+    public void reserveRoom(String roomType){
+        if(roomType == "standard"){
+            reservedStandards.add(new StandardRoom());
+        }
+        else{
+            reservedSuites.add(new SuiteRoom());
+        }
 
+        clients.add(new Client());
     }
 
     public void checkoutRoom(){
@@ -44,5 +52,5 @@ public class Hotel {
     public float getClientBalance(){
 
     }
-    
+
 }
