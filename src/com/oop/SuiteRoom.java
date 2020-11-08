@@ -6,7 +6,7 @@ public class SuiteRoom extends Room {
     private boolean kitchenette = true;
     private boolean needsRestock = false;
 
-    public SuiteRoom(int rooms, int roomNo, String roomType, int beds, Client occupant, float averagePrice){
+    public SuiteRoom(int roomNo, String roomType, float averagePrice, Client occupant, int rooms, int beds){
         super(roomNo, "Suite", averagePrice, occupant);
         this.rooms = rooms;
         this.beds = beds;
